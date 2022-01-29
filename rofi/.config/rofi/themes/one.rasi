@@ -1,0 +1,60 @@
+@import "colors.rasi"
+
+* {
+  background-color: @background;
+  font-family: "FiraCode Nerd Font";
+  text-color: #ABB2BF;
+  spacing: 0;
+  width: 550px;
+}
+
+window {
+  padding: 30;
+}
+
+inputbar {
+  children: [prompt,entry];
+}
+
+entry {
+  text-color: @green;
+}
+
+prompt {
+  text-color: @red;
+  padding: 20px;
+}
+
+textbox {
+  padding: 8px 16px;
+}
+
+entry {
+  padding: 16px;
+}
+
+listview {
+  cycle: false;
+  margin: 0 0 -1px 0;
+  scrollbar: false;
+}
+
+element {
+  padding: 17px;
+  text-color: #98C379;
+}
+
+element-text, element-icon {
+  background-color: @background;
+}
+
+element-text.selected, element-icon.selected {
+  background-color: @sbackground;
+  text-color: @purple;
+}
+
+element selected {
+  background-color: @sbackground;
+  text-color: @green;
+  border-radius: 5px;
+}

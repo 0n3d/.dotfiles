@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Start sxhkd
+pkill sxhkd &&\
+pgrep -x sxhkd > /dev/null || sxhkd&
+
+# Configure desktop names
+bspc monitor DP-4 -d 1 2 3 4 5 6 7 8 9 0
+bspc monitor DVI-D-0 -d y x c v
+
+# Window layout stuff
+bspc config border_width         0
+bspc config normal_border_color off
+bspc config presel_feedback_color \#303030
+bspc config window_gap          20
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc config pointer_follows_monitor true
+
+# Window Compositor and Wallpaper
+picom --respect-prop-shadow&
+polybar -c ~/.config/polybar/config.ini top&
+~/.config/features/set_wallpaper.sh&
+
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+# Update Cursor Theme
+xsetroot -cursor_name left_ptr
+
+# Personal
+setup_path="$HOME/.config/private/desktop.sh"
+[[ -e $setup_path ]] bash -c "$setup_path"

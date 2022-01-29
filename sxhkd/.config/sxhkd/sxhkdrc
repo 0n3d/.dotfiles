@@ -1,0 +1,85 @@
+# Reload functions
+super + Escape
+  pkill sxhkd &&\
+  pgrep -x sxhkd > /dev/null || sxhkd&
+
+# Reload desktop
+super + shift + Escape
+  ~/.config/bspwm/bspwmrc
+
+# Open application
+super + p
+  rofi -show drun
+
+# Open terminal
+super + Return
+  kitty
+
+# Get passwort
+super + shift + p
+  passmenu
+
+# Make screenshot
+super + s
+  flameshot gui
+
+# Close Window
+super + shift + c
+  bspc node -c
+
+# Basic vim navigation (3 in 1!)
+super + {_,ctrl + ,ctrl + alt + }{h,j,k,l}
+  bspc node -{f,s,p} {west,south,north,east} --follow
+
+super + shift + {h,j,k,l}
+  ~/.config/bspwm/bubblemove {west,south,north,east}
+
+super + alt + {h,j,k,l}
+  ~/.config/bspwm/resize {west,south,north,east} 50
+
+# Cancel preselection
+super + ctrl + i
+  bspc node -p cancel
+
+super + alt + ctrl + {1-9,0}
+  ~/.config/features/to_desktop.sh {1-9,10}
+
+# Change desktop
+super + {1-9,0}
+  bspc desktop -f {1-9,10}
+
+# Move to desktop
+super + shift + {1-9,0}
+  bspc node -d {1-9,10} --follow
+
+super + alt + ctrl + {y,x,c,v}
+  ~/.config/features/to_desktop.sh {y,x,c,v}
+
+super + {y,x,c,v}
+  bspc desktop -f {y,x,c,v}
+
+super + shift + {y,x,c,v}
+  bspc node -d {y,x,c,v} --follow
+
+super + shift + {q,e}
+  bspc node @parent -R {270,90}
+
+super + {f,d,w}
+  bspc node -t {fullscreen,tiled,floating}
+
+super + m
+  bspc node -g hidden=on
+
+super + shift + m
+  bspc node $(bspc query -d focused -N -n .hidden | tail -n1) -g hidden=off
+
+super + shift + plus
+  bspc node -m last --follow
+
+super + equal
+  bspc monitor -f last
+
+# Scripts
+
+super + r
+  $HOME/.config/sxhkd/super_r.sh

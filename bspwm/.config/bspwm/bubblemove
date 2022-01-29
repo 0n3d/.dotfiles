@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+node="$(bspc query -N -n)" dest="$(bspc query -N -n $1)"
+nlvls=( $(bspc query -N $node -n .ancestor_of.!hidden) )
+dlvls=( $(bspc query -N $dest -n .ancestor_of.!hidden) )
+nlvl=${#nlvls[@]} dlvl=${#dlvls[@]}
+oper='-s'
+if [[ "$nlvl" < "$dlvl" ]]; then
+    dest=${dlvls[$(( nlvl - 1 ))]}
+elif [[ "$nlvl" > "$dlvl" ]]; then
+    dir=( west east north south ) 
+    oper='-n' cp=${nlvls[$(( dlvl - 1 ))]}
+    [[ "$(bspc query -N -n "${cp}#@1")" == ${nlvls[$dlvl]} ]]
+    polarity=$?                                              
+    bspc query -N -n "${cp}.horizontal" && (( polarity += 2 ))
+    ratio=$(bspc query -T -n "$cp" | jq -r '.splitRatio')     
+    bspc node "$dest" -p "${dir[$polarity]}" -o "$ratio" 
+fi
+bspc node "$node" "$oper" "$dest"
