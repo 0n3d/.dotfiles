@@ -20,9 +20,11 @@ Other requirements:
 - Polybar
 - Zshell
 - Zplug
+- Packer
+- FiraCode Nerd Font
 
 ### One Command Install
 
 ```sh
-yay -S stow picom-ibhagwan-git bspwm sxhkd neovim ranger kitty feh rofi polybar zsh zplug
+yay -S stow picom-ibhagwan-git bspwm sxhkd neovim ranger kitty feh rofi polybar zsh zplug nvim-packer-git nerd-fonts-fira-code
 ```
