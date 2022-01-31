@@ -12,6 +12,7 @@ Other requirements:
 
 - Picom with rounded corners (https://aur.archlinux.org/packages/picom-ibhagwan-git/)
 - Bspwm and Sxhkd
+- Dunst
 - Neovim
 - Ranger
 - Kitty
@@ -26,5 +27,5 @@ Other requirements:
 ### One Command Install
 
 ```sh
-yay -S stow picom-ibhagwan-git bspwm sxhkd neovim ranger kitty feh rofi polybar zsh zplug nvim-packer-git nerd-fonts-fira-code
+yay -S stow picom-ibhagwan-git bspwm sxhkd neovim ranger kitty feh rofi polybar zsh zplug nvim-packer-git nerd-fonts-fira-code dunst
 ```

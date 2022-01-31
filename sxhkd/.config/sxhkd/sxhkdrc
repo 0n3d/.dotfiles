@@ -79,6 +79,11 @@ super + shift + plus
 super + equal
   bspc monitor -f last
 
+# Dunst
+
+super space
+  dunstctl close-all
+
 # Scripts
 
 super + r
