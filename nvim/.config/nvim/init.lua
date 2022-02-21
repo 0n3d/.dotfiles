@@ -12,6 +12,9 @@ vim.cmd [[
   augroup end
 ]]
 
+-- Manpager
+vim.g.no_man_maps = true
+
 --Use Clipboard
 -- vim.o.clipboard = 'unnamedplus'
 
@@ -236,6 +239,7 @@ local lsp_installer = require("nvim-lsp-installer")
 -- or if the server is already installed).
 lsp_installer.on_server_ready(function(server)
     local opts = {}
+    on_attach(0, 0)
 
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then

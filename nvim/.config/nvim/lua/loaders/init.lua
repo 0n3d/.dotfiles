@@ -32,6 +32,10 @@ require("packer").startup(function()
       "rafamadriz/friendly-snippets"
     }
   }
+  use {
+    "ray-x/lsp_signature.nvim",
+    config = function() require"lsp_signature".setup({}) end,
+  }
   use "L3MON4D3/LuaSnip" -- Snippets plugin
   use "williamboman/nvim-lsp-installer"
   use "caenrique/nvim-toggle-terminal"
@@ -60,24 +64,21 @@ require("packer").startup(function()
       require"hop".setup { keys = 'asdfjklewio' }
     end
   }
-
+  
   use {
-    "blackCauldron7/surround.nvim",
-    config = function()
-      require"surround".setup { mappings_style = "surround" }
-    end
+    "tpope/vim-surround",
   }
 
   -- Markdown
-  -- use {
-  --   "preservim/vim-markdown",
-  --   requires = {
-  --     "godlygeek/tabular",
-  --   },
-  --   ft = {
-  --     "markdown",
-  --   },
-  -- }
+  use {
+    "preservim/vim-markdown",
+    requires = {
+      "godlygeek/tabular",
+    },
+    ft = {
+      "markdown",
+    },
+  }
 
   use {
     "dhruvasagar/vim-table-mode",
