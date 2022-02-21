@@ -71,16 +71,6 @@ require("packer").startup(function()
 
   -- Markdown
   use {
-    "preservim/vim-markdown",
-    requires = {
-      "godlygeek/tabular",
-    },
-    ft = {
-      "markdown",
-    },
-  }
-
-  use {
     "dhruvasagar/vim-table-mode",
     ft = {
       "markdown",
