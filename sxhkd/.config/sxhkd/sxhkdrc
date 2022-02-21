@@ -21,7 +21,7 @@ super + shift + p
 
 # Make screenshot
 super + s
-  flameshot gui
+  flameshot gui -r | xclip -selection clipboard -t image/png
 
 # Close Window
 super + shift + c
