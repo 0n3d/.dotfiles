@@ -5,12 +5,12 @@ require 'prefs.blankline'.setup()
 require 'prefs.onedark'.setup()
 
 --Autocompile
-vim.cmd [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-  augroup end
-]]
+-- vim.cmd [[
+--   augroup Packer
+--     autocmd!
+--     autocmd BufWritePost init.lua PackerCompile
+--   augroup end
+-- ]]
 
 -- Manpager
 vim.g.no_man_maps = true
@@ -238,8 +238,12 @@ local lsp_installer = require("nvim-lsp-installer")
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
 lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    on_attach(0, 0)
+    local opts = {
+      on_attach = on_attach,
+      flags = {
+        debounce_text_changes = 150,
+      },
+    }
 
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then
