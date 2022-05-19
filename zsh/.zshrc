@@ -8,16 +8,16 @@ SPACESHIP_DIR_COLOR='#C678DD'
 
 zplug "agkozak/zsh-z"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-completions"
 zplug "zdharma/fast-syntax-highlighting"
 zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     fi
+# fi
 
 zplug load
 
@@ -25,9 +25,6 @@ zplug load
 setopt histignorespace
 
 export EDITOR="nvim"
-
-# Flutter stuff
-export CHROME_EXECUTABLE="chromium"
 
 HISTCONTROL=ignorespace:erasedups
 SAVEHIST=100
