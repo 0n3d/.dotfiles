@@ -3,6 +3,7 @@ local use = require("packer").use
 require("packer").startup(function()
   use "wbthomason/packer.nvim" -- Package manager
   use "tpope/vim-fugitive" -- Git commands in nvim
+  use 'lewis6991/impatient.nvim'
   use "tpope/vim-rhubarb" -- Fugitive-companion to interact with github
   use "numToStr/Comment.nvim" -- "gc" to comment visual regions/lines
   -- UI to select things (files, grep results, open buffers...)
@@ -94,5 +95,11 @@ require("packer").startup(function()
     },
     run = 'cd app && npm install',
     cmd = 'MarkdownPreview',
+  }
+
+  -- Dashboard
+  
+  use {
+    'glepnir/dashboard-nvim',
   }
 end)
