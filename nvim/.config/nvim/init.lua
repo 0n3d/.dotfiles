@@ -4,6 +4,8 @@ require 'prefs.lualine'.setup()
 require 'prefs.blankline'.setup()
 require 'prefs.onedark'.setup()
 
+local lsp_options = require'prefs.lsp'
+
 --Autocompile
 -- vim.cmd [[
 --   augroup Packer
@@ -233,28 +235,24 @@ local on_attach = function(_, bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer = require'nvim-lsp-installer'
+local servers = lsp_installer.get_installed_servers()
 
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-      on_attach = on_attach,
-      flags = {
-        debounce_text_changes = 150,
-      },
-    }
+for _, server in pairs(servers) do
+  local options = server:get_default_options()
 
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
+  for k, v in pairs(lsp_options.default) do
+    options[k] = v
+  end
 
-    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-    -- before passing it onwards to lspconfig.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-end)
+  if type(lsp_options[server.name]) == 'table' then
+    for k, v in pairs(lsp_options[server.name]) do
+      options[k] = v
+    end
+  end
+
+  server:setup(options)
+end
 
 -- luasnip setup
 require 'luasnip.loaders.from_vscode'.load()
