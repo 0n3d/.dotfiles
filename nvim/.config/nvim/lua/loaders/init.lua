@@ -8,9 +8,19 @@ require("packer").startup(function()
   -- UI to select things (files, grep results, open buffers...)
   use { "nvim-telescope/telescope.nvim", requires = { 'nvim-lua/plenary.nvim' } }
   use {"nvim-telescope/telescope-fzf-native.nvim", run = 'make' }
-  use { "nvim-lualine/lualine.nvim" } -- Fancier statusline
+  use {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require'lualine'.setup(require'prefs.lualine')
+    end,
+  } -- Fancier statusline
   -- Add indentation guides even on blank lines
-  use { "lukas-reineke/indent-blankline.nvim" }
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require'prefs.blankline'.setup()
+    end,
+  }
   -- Add git related info in the signs columns and popups
   use { "lewis6991/gitsigns.nvim", requires = { 'nvim-lua/plenary.nvim' } }
   -- Highlight, edit, and navigate code using a fast incremental parsing library

@@ -1,7 +1,5 @@
 require 'loaders.init' -- Load plugins
 require 'keybindings.init'
-require 'prefs.lualine'.setup()
-require 'prefs.blankline'.setup()
 require 'prefs.onedark'.setup()
 
 local lsp_options = require'prefs.lsp'
