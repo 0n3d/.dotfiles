@@ -7,7 +7,13 @@ require("packer").startup(function()
   use "tpope/vim-rhubarb" -- Fugitive-companion to interact with github
   use "numToStr/Comment.nvim" -- "gc" to comment visual regions/lines
   -- UI to select things (files, grep results, open buffers...)
-  use { "nvim-telescope/telescope.nvim", requires = { 'nvim-lua/plenary.nvim' } }
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require'telescope'.setup(require'prefs.telescope')
+    end,
+  }
   use {"nvim-telescope/telescope-fzf-native.nvim", run = 'make' }
   use {
     "nvim-lualine/lualine.nvim",
@@ -95,11 +101,5 @@ require("packer").startup(function()
     },
     run = 'cd app && npm install',
     cmd = 'MarkdownPreview',
-  }
-
-  -- Dashboard
-  
-  use {
-    'glepnir/dashboard-nvim',
   }
 end)

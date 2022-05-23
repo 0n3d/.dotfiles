@@ -4,14 +4,6 @@ require 'prefs.onedark'.setup()
 
 local lsp_options = require'prefs.lsp'
 
---Autocompile
--- vim.cmd [[
---   augroup Packer
---     autocmd!
---     autocmd BufWritePost init.lua PackerCompile
---   augroup end
--- ]]
-
 -- Manpager
 vim.g.no_man_maps = true
 
@@ -136,18 +128,6 @@ require('gitsigns').setup {
     delete = { text = '_' },
     topdelete = { text = '‾' },
     changedelete = { text = '~' },
-  },
-}
-
--- Telescope
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
   },
 }
 
@@ -310,4 +290,5 @@ cmp.setup {
     { name = 'buffer' }
   },
 }
+
 -- vim: ts=2 sts=2 sw=2 et

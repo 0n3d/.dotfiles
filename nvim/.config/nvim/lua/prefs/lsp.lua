@@ -10,4 +10,3 @@ local lsp = {
 }
 
 return lsp
-
