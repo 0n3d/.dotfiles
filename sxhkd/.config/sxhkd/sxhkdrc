@@ -88,3 +88,6 @@ super space
 
 super + r
   $HOME/.config/sxhkd/super_r.sh
+
+super + b
+  $HOME/.config/sxhkd/super_b.sh
