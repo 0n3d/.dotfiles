@@ -194,7 +194,7 @@ vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<
 vim.diagnostic.config({
   virtual_text = false
 })
-local lspconfig = require 'lspconfig'
+
 local on_attach = function(_, bufnr)
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -228,6 +228,8 @@ for _, server in pairs(servers) do
       options[k] = v
     end
   end
+
+  options.on_attach = on_attach
 
   server:setup(options)
 end
