@@ -3,27 +3,27 @@ local colors = require'prefs.onedark'.colors
 require('bufferline').setup {
   highlights = {
     background = {
-      guibg = colors.black,
+      bg = colors.black,
     },
     fill = {
-      guibg = colors.black,
+      bg = colors.black,
     },
     tab = {
-      guibg = colors.black,
+      bg = colors.black,
     },
     close_button = {
-      guibg = colors.black,
+      bg = colors.black,
     },
     close_button_selected = {
-      guifg = '#fff',
+      fg = '#ffffff',
     },
     tab_close = {
-      guibg = colors.black,
-      guifg = colors.white,
+      bg = colors.black,
+      fg = colors.white,
     },
     separator = {
-      guibg = colors.white,
-      guifg = colors.white,
+      bg = colors.white,
+      fg = colors.white,
     }
   },
   options = {
@@ -38,7 +38,9 @@ require('bufferline').setup {
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-    indicator_icon = '▎',
+    indicator = {
+      icon = '▎',
+    },
     buffer_close_icon = '',
     modified_icon = '●',
     close_icon = '',
