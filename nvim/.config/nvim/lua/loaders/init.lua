@@ -75,6 +75,11 @@ require("packer").startup(function()
   }
 
   use {
+    'nmac427/guess-indent.nvim',
+    config = function() require('guess-indent').setup {} end,
+  }
+
+  use {
     "phaazon/hop.nvim",
     branch = "v1", -- optional but recommended
     config = function()
@@ -97,9 +102,17 @@ require("packer").startup(function()
   use {
     'iamcco/markdown-preview.nvim',
     ft = {
-      "markdown",
+      'markdown',
     },
     run = 'cd app && npm install',
     cmd = 'MarkdownPreview',
+  }
+
+  use {
+    'lervag/vimtex',
+    ft = {
+      'latex',
+      'tex'
+    }
   }
 end)
